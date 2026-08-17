@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Hotel Azul</a>
+    <div class="navbar-nav">
+      <a class="nav-link" routerLink="/">Inicio</a>
+
+      <ng-container *ngIf="usuario">
+        <a class="nav-link" routerLink="/habitaciones">Habitaciones</a>
+        <a class="nav-link" routerLink="/huespedes">Huéspedes</a>
+        <a class="nav-link" routerLink="/reservas">Reservas</a>
+        <a class="nav-link" routerLink="/pagos">Pagos</a>
+      </ng-container>
+    </div>
+
+    <div class="navbar-nav ms-auto">
+      <ng-container *ngIf="usuario; else sinSesion">
+        <span class="nav-link text-white">{{ usuario.username }} ({{ usuario.rol }})</span>
+        <a class="nav-link" role="button" (click)="cerrarSesion()">Cerrar sesión</a>
+      </ng-container>
+      <ng-template #sinSesion>
+        <a class="nav-link" routerLink="/login">Ingresar</a>
+      </ng-template>
+    </div>
+  </div>
+</nav>
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>

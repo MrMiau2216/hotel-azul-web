@@ -1,0 +1,25 @@
+<h2 class="mb-4">Nuestras habitaciones</h2>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col" *ngFor="let habitacion of habitaciones">
+    <div class="card h-100 shadow-sm">
+      <img [src]="habitacion.urlImagen" class="card-img-top" alt="Habitación {{ habitacion.numero }}" style="height: 200px; object-fit: cover;">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-start">
+          <h5 class="card-title">Habitación {{ habitacion.numero }}</h5>
+          <span class="badge" [class.bg-success]="habitacion.estado === 'DISPONIBLE'" [class.bg-danger]="habitacion.estado !== 'DISPONIBLE'">
+            {{ habitacion.estado === 'DISPONIBLE' ? 'Disponible' : 'No disponible' }}
+          </span>
+        </div>
+        <h6 class="card-subtitle mb-2 text-muted">{{ habitacion.tipo.nombre }} · Piso {{ habitacion.piso }}</h6>
+        <p class="card-text">{{ habitacion.descripcion }}</p>
+        <p class="card-text fw-bold">S/ {{ habitacion.precio }} por noche</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-info mt-4" role="alert">
+  Para reservar una habitación, comunícate con recepción llamando al <strong>(01) 555-1234</strong>.
+  Nuestro personal registrará tu reserva.
+</div>
