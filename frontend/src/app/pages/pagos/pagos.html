@@ -1,0 +1,62 @@
+<h2 class="mb-4">Pagos</h2>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h5 class="card-title">{{ idEnEdicion ? 'Editar pago' : 'Nuevo pago' }}</h5>
+    <form (ngSubmit)="guardar()">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label class="form-label">Reserva</label>
+          <select class="form-select" name="reservaId" [(ngModel)]="reservaId" required>
+            <option [ngValue]="0">Seleccione...</option>
+            <option *ngFor="let reserva of reservas" [ngValue]="reserva.id">
+              #{{ reserva.id }} - {{ reserva.huesped.nombres }} {{ reserva.huesped.apellidos }} (Hab. {{ reserva.habitacion.numero }})
+            </option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Monto</label>
+          <input type="number" class="form-control" name="monto" [(ngModel)]="monto" required>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Método</label>
+          <select class="form-select" name="metodo" [(ngModel)]="metodo" required>
+            <option value="EFECTIVO">Efectivo</option>
+            <option value="TARJETA">Tarjeta</option>
+            <option value="TRANSFERENCIA">Transferencia</option>
+          </select>
+        </div>
+      </div>
+      <div class="mt-3">
+        <button type="submit" class="btn btn-primary">{{ idEnEdicion ? 'Actualizar' : 'Registrar' }}</button>
+        <button type="button" class="btn btn-secondary ms-2" *ngIf="idEnEdicion" (click)="limpiarFormulario()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Reserva</th>
+      <th>Huésped</th>
+      <th>Monto</th>
+      <th>Método</th>
+      <th>Fecha</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pago of pagos">
+      <td>#{{ pago.reserva.id }}</td>
+      <td>{{ pago.reserva.huesped.nombres }} {{ pago.reserva.huesped.apellidos }}</td>
+      <td>S/ {{ pago.monto }}</td>
+      <td>{{ pago.metodo }}</td>
+      <td>{{ pago.fechaPago }}</td>
+      <td>
+        <button class="btn btn-sm btn-outline-primary me-2" (click)="editar(pago)">Editar</button>
+        <button class="btn btn-sm btn-outline-danger" (click)="eliminar(pago.id!)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

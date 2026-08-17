@@ -1,0 +1,61 @@
+<h2 class="mb-4">Huéspedes</h2>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h5 class="card-title">{{ idEnEdicion ? 'Editar huésped' : 'Nuevo huésped' }}</h5>
+    <form (ngSubmit)="guardar()">
+      <div class="row g-3">
+        <div class="col-md-2">
+          <label class="form-label">DNI</label>
+          <input type="text" class="form-control" name="dni" [(ngModel)]="dni" required>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Nombres</label>
+          <input type="text" class="form-control" name="nombres" [(ngModel)]="nombres" required>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Apellidos</label>
+          <input type="text" class="form-control" name="apellidos" [(ngModel)]="apellidos" required>
+        </div>
+        <div class="col-md-2">
+          <label class="form-label">Teléfono</label>
+          <input type="text" class="form-control" name="telefono" [(ngModel)]="telefono">
+        </div>
+        <div class="col-md-2">
+          <label class="form-label">Correo</label>
+          <input type="email" class="form-control" name="correo" [(ngModel)]="correo">
+        </div>
+      </div>
+      <div class="mt-3">
+        <button type="submit" class="btn btn-primary">{{ idEnEdicion ? 'Actualizar' : 'Registrar' }}</button>
+        <button type="button" class="btn btn-secondary ms-2" *ngIf="idEnEdicion" (click)="limpiarFormulario()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>DNI</th>
+      <th>Nombres</th>
+      <th>Apellidos</th>
+      <th>Teléfono</th>
+      <th>Correo</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let huesped of huespedes">
+      <td>{{ huesped.dni }}</td>
+      <td>{{ huesped.nombres }}</td>
+      <td>{{ huesped.apellidos }}</td>
+      <td>{{ huesped.telefono }}</td>
+      <td>{{ huesped.correo }}</td>
+      <td>
+        <button class="btn btn-sm btn-outline-primary me-2" (click)="editar(huesped)">Editar</button>
+        <button class="btn btn-sm btn-outline-danger" (click)="eliminar(huesped.id!)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

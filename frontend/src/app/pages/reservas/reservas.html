@@ -1,0 +1,78 @@
+<h2 class="mb-4">Reservas</h2>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h5 class="card-title">{{ idEnEdicion ? 'Editar reserva' : 'Nueva reserva' }}</h5>
+    <form (ngSubmit)="guardar()">
+      <div class="row g-3">
+        <div class="col-md-3">
+          <label class="form-label">Habitación</label>
+          <select class="form-select" name="habitacionId" [(ngModel)]="habitacionId" required>
+            <option [ngValue]="0">Seleccione...</option>
+            <option *ngFor="let habitacion of habitaciones" [ngValue]="habitacion.id">{{ habitacion.numero }} - {{ habitacion.tipo.nombre }}</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Huésped</label>
+          <select class="form-select" name="huespedId" [(ngModel)]="huespedId" required>
+            <option [ngValue]="0">Seleccione...</option>
+            <option *ngFor="let huesped of huespedes" [ngValue]="huesped.id">{{ huesped.nombres }} {{ huesped.apellidos }}</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <label class="form-label">Fecha entrada</label>
+          <input type="date" class="form-control" name="fechaEntrada" [(ngModel)]="fechaEntrada" required>
+        </div>
+        <div class="col-md-2">
+          <label class="form-label">Fecha salida</label>
+          <input type="date" class="form-control" name="fechaSalida" [(ngModel)]="fechaSalida" required>
+        </div>
+        <div class="col-md-2">
+          <label class="form-label">Total</label>
+          <input type="number" class="form-control" name="total" [(ngModel)]="total" required>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Estado</label>
+          <select class="form-select" name="estado" [(ngModel)]="estado" required>
+            <option value="PENDIENTE">Pendiente</option>
+            <option value="CONFIRMADA">Confirmada</option>
+            <option value="FINALIZADA">Finalizada</option>
+            <option value="CANCELADA">Cancelada</option>
+          </select>
+        </div>
+      </div>
+      <div class="mt-3">
+        <button type="submit" class="btn btn-primary">{{ idEnEdicion ? 'Actualizar' : 'Registrar' }}</button>
+        <button type="button" class="btn btn-secondary ms-2" *ngIf="idEnEdicion" (click)="limpiarFormulario()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Habitación</th>
+      <th>Huésped</th>
+      <th>Entrada</th>
+      <th>Salida</th>
+      <th>Total</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let reserva of reservas">
+      <td>{{ reserva.habitacion.numero }}</td>
+      <td>{{ reserva.huesped.nombres }} {{ reserva.huesped.apellidos }}</td>
+      <td>{{ reserva.fechaEntrada }}</td>
+      <td>{{ reserva.fechaSalida }}</td>
+      <td>S/ {{ reserva.total }}</td>
+      <td>{{ reserva.estado }}</td>
+      <td>
+        <button class="btn btn-sm btn-outline-primary me-2" (click)="editar(reserva)">Editar</button>
+        <button class="btn btn-sm btn-outline-danger" (click)="eliminar(reserva.id!)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

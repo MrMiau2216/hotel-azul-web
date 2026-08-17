@@ -1,0 +1,76 @@
+<h2 class="mb-4">Habitaciones</h2>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h5 class="card-title">{{ idEnEdicion ? 'Editar habitación' : 'Nueva habitación' }}</h5>
+    <form (ngSubmit)="guardar()">
+      <div class="row g-3">
+        <div class="col-md-2">
+          <label class="form-label">Número</label>
+          <input type="text" class="form-control" name="numero" [(ngModel)]="numero" required>
+        </div>
+        <div class="col-md-2">
+          <label class="form-label">Piso</label>
+          <input type="number" class="form-control" name="piso" [(ngModel)]="piso" required>
+        </div>
+        <div class="col-md-2">
+          <label class="form-label">Precio</label>
+          <input type="number" class="form-control" name="precio" [(ngModel)]="precio" required>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Tipo</label>
+          <select class="form-select" name="tipoId" [(ngModel)]="tipoId" required>
+            <option [ngValue]="0">Seleccione...</option>
+            <option *ngFor="let tipo of tipos" [ngValue]="tipo.id">{{ tipo.nombre }}</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Estado</label>
+          <select class="form-select" name="estado" [(ngModel)]="estado" required>
+            <option value="DISPONIBLE">Disponible</option>
+            <option value="OCUPADA">Ocupada</option>
+            <option value="MANTENIMIENTO">Mantenimiento</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">URL de imagen</label>
+          <input type="text" class="form-control" name="urlImagen" [(ngModel)]="urlImagen">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Descripción</label>
+          <input type="text" class="form-control" name="descripcion" [(ngModel)]="descripcion">
+        </div>
+      </div>
+      <div class="mt-3">
+        <button type="submit" class="btn btn-primary">{{ idEnEdicion ? 'Actualizar' : 'Registrar' }}</button>
+        <button type="button" class="btn btn-secondary ms-2" *ngIf="idEnEdicion" (click)="limpiarFormulario()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Número</th>
+      <th>Piso</th>
+      <th>Tipo</th>
+      <th>Precio</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let habitacion of habitaciones">
+      <td>{{ habitacion.numero }}</td>
+      <td>{{ habitacion.piso }}</td>
+      <td>{{ habitacion.tipo.nombre }}</td>
+      <td>S/ {{ habitacion.precio }}</td>
+      <td>{{ habitacion.estado }}</td>
+      <td>
+        <button class="btn btn-sm btn-outline-primary me-2" (click)="editar(habitacion)">Editar</button>
+        <button class="btn btn-sm btn-outline-danger" (click)="eliminar(habitacion.id!)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
