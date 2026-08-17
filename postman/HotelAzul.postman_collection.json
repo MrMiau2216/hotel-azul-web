@@ -1,0 +1,288 @@
+{
+  "info": {
+    "name": "Hotel Azul",
+    "description": "Colección de endpoints REST del backend de Hotel Azul (Spring Boot).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login - Administrador",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"Admin123\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/auth/login", "host": ["{{baseUrl}}"], "path": ["api", "auth", "login"] }
+          }
+        },
+        {
+          "name": "Login - Recepcionista",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"recepcion\",\n  \"password\": \"Recepcion123\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/auth/login", "host": ["{{baseUrl}}"], "path": ["api", "auth", "login"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Público",
+      "item": [
+        {
+          "name": "Listar habitaciones (catálogo público)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/publico/habitaciones", "host": ["{{baseUrl}}"], "path": ["api", "publico", "habitaciones"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tipos de Habitación",
+      "item": [
+        {
+          "name": "Listar tipos de habitación",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/tipos-habitacion", "host": ["{{baseUrl}}"], "path": ["api", "tipos-habitacion"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Habitaciones",
+      "item": [
+        {
+          "name": "Listar habitaciones",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/habitaciones", "host": ["{{baseUrl}}"], "path": ["api", "habitaciones"] }
+          }
+        },
+        {
+          "name": "Buscar habitación por ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/habitaciones/1", "host": ["{{baseUrl}}"], "path": ["api", "habitaciones", "1"] }
+          }
+        },
+        {
+          "name": "Crear habitación",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numero\": \"501\",\n  \"piso\": 5,\n  \"precio\": 150.00,\n  \"urlImagen\": \"https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600\",\n  \"descripcion\": \"Habitación nueva de prueba\",\n  \"estado\": \"DISPONIBLE\",\n  \"tipo\": { \"id\": 1 }\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/habitaciones", "host": ["{{baseUrl}}"], "path": ["api", "habitaciones"] }
+          }
+        },
+        {
+          "name": "Actualizar habitación",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numero\": \"501\",\n  \"piso\": 5,\n  \"precio\": 160.00,\n  \"urlImagen\": \"https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600\",\n  \"descripcion\": \"Habitación actualizada\",\n  \"estado\": \"MANTENIMIENTO\",\n  \"tipo\": { \"id\": 1 }\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/habitaciones/1", "host": ["{{baseUrl}}"], "path": ["api", "habitaciones", "1"] }
+          }
+        },
+        {
+          "name": "Eliminar habitación",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/api/habitaciones/1", "host": ["{{baseUrl}}"], "path": ["api", "habitaciones", "1"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Huéspedes",
+      "item": [
+        {
+          "name": "Listar huéspedes",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/huespedes", "host": ["{{baseUrl}}"], "path": ["api", "huespedes"] }
+          }
+        },
+        {
+          "name": "Buscar huésped por ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/huespedes/1", "host": ["{{baseUrl}}"], "path": ["api", "huespedes", "1"] }
+          }
+        },
+        {
+          "name": "Crear huésped",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dni\": \"12345678\",\n  \"nombres\": \"Juan\",\n  \"apellidos\": \"Pérez López\",\n  \"telefono\": \"987654321\",\n  \"correo\": \"juan.perez@example.com\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/huespedes", "host": ["{{baseUrl}}"], "path": ["api", "huespedes"] }
+          }
+        },
+        {
+          "name": "Actualizar huésped",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dni\": \"12345678\",\n  \"nombres\": \"Juan\",\n  \"apellidos\": \"Pérez López\",\n  \"telefono\": \"999888777\",\n  \"correo\": \"juan.perez@example.com\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/huespedes/1", "host": ["{{baseUrl}}"], "path": ["api", "huespedes", "1"] }
+          }
+        },
+        {
+          "name": "Eliminar huésped",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/api/huespedes/1", "host": ["{{baseUrl}}"], "path": ["api", "huespedes", "1"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reservas",
+      "item": [
+        {
+          "name": "Listar reservas",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/reservas", "host": ["{{baseUrl}}"], "path": ["api", "reservas"] }
+          }
+        },
+        {
+          "name": "Buscar reserva por ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/reservas/1", "host": ["{{baseUrl}}"], "path": ["api", "reservas", "1"] }
+          }
+        },
+        {
+          "name": "Crear reserva",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"habitacion\": { \"id\": 1 },\n  \"huesped\": { \"id\": 1 },\n  \"fechaEntrada\": \"2026-09-01\",\n  \"fechaSalida\": \"2026-09-05\",\n  \"estado\": \"PENDIENTE\",\n  \"total\": 480.00\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/reservas", "host": ["{{baseUrl}}"], "path": ["api", "reservas"] }
+          }
+        },
+        {
+          "name": "Actualizar reserva",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"habitacion\": { \"id\": 1 },\n  \"huesped\": { \"id\": 1 },\n  \"fechaEntrada\": \"2026-09-01\",\n  \"fechaSalida\": \"2026-09-05\",\n  \"estado\": \"CONFIRMADA\",\n  \"total\": 480.00\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/reservas/1", "host": ["{{baseUrl}}"], "path": ["api", "reservas", "1"] }
+          }
+        },
+        {
+          "name": "Eliminar reserva",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/api/reservas/1", "host": ["{{baseUrl}}"], "path": ["api", "reservas", "1"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pagos",
+      "item": [
+        {
+          "name": "Listar pagos",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/pagos", "host": ["{{baseUrl}}"], "path": ["api", "pagos"] }
+          }
+        },
+        {
+          "name": "Buscar pago por ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/pagos/1", "host": ["{{baseUrl}}"], "path": ["api", "pagos", "1"] }
+          }
+        },
+        {
+          "name": "Crear pago",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reserva\": { \"id\": 1 },\n  \"monto\": 480.00,\n  \"metodo\": \"EFECTIVO\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/pagos", "host": ["{{baseUrl}}"], "path": ["api", "pagos"] }
+          }
+        },
+        {
+          "name": "Actualizar pago",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reserva\": { \"id\": 1 },\n  \"monto\": 480.00,\n  \"metodo\": \"TARJETA\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/pagos/1", "host": ["{{baseUrl}}"], "path": ["api", "pagos", "1"] }
+          }
+        },
+        {
+          "name": "Eliminar pago",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/api/pagos/1", "host": ["{{baseUrl}}"], "path": ["api", "pagos", "1"] }
+          }
+        }
+      ]
+    }
+  ]
+}
