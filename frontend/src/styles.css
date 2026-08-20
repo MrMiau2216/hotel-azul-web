@@ -1,1 +1,347 @@
-/* You can add global styles to this file, and also import other style files */
+/* ===============================
+   HOTEL COSTA AZUL - SISTEMA DE DISEÑO
+   =============================== */
+
+:root {
+  --azul-marino: #0B2545;
+  --azul-medio: #1B4965;
+  --arena: #E8D9C0;
+  --dorado: #C9A227;
+  --blanco-roto: #FAF8F5;
+
+  --font-titulos: 'Playfair Display', Georgia, serif;
+  --font-texto: 'Lato', 'Segoe UI', sans-serif;
+}
+
+body {
+  font-family: var(--font-texto);
+  color: var(--azul-marino);
+  background-color: var(--blanco-roto);
+}
+
+h1, h2, h3, h4, .font-titulos {
+  font-family: var(--font-titulos);
+}
+
+/* ===============================
+   BARRA PÚBLICA
+   =============================== */
+.navbar-publico {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: transparent;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.navbar-publico.navbar-solida {
+  background-color: var(--azul-marino);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.navbar-publico .navbar-brand {
+  font-family: var(--font-titulos);
+  font-size: 1.5rem;
+  color: var(--blanco-roto) !important;
+}
+
+.navbar-publico .nav-link {
+  color: var(--arena) !important;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.navbar-publico .nav-link:hover,
+.navbar-publico .nav-link.active {
+  color: var(--dorado) !important;
+}
+
+/* ===============================
+   PIE DE PÁGINA
+   =============================== */
+.footer-publico {
+  background-color: var(--azul-marino);
+  color: var(--arena);
+  padding: 48px 0;
+}
+
+.footer-publico h5 {
+  font-family: var(--font-titulos);
+  color: var(--blanco-roto);
+}
+
+.footer-publico a {
+  color: var(--arena);
+  text-decoration: none;
+}
+
+.footer-publico a:hover {
+  color: var(--dorado);
+}
+
+/* ===============================
+   PORTADAS
+   =============================== */
+.hero-completa {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: var(--blanco-roto);
+}
+
+.hero-completa::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 37, 69, 0.55) 0%, rgba(11, 37, 69, 0.75) 60%, rgba(11, 37, 69, 0.92) 100%);
+}
+
+.hero-completa .hero-contenido {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  padding: 0 1.5rem;
+}
+
+.hero-completa h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.hero-completa .hero-frase {
+  font-size: 1.25rem;
+  color: var(--arena);
+  margin-bottom: 1rem;
+}
+
+.hero-baja {
+  position: relative;
+  min-height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: var(--blanco-roto);
+}
+
+.hero-baja::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 37, 69, 0.65);
+}
+
+.hero-baja .hero-contenido {
+  position: relative;
+  z-index: 1;
+  padding: 0 1.5rem;
+}
+
+.hero-baja h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+}
+
+/* ===============================
+   BOTONES
+   =============================== */
+.btn-dorado {
+  background-color: var(--dorado);
+  border: none;
+  color: var(--azul-marino);
+  font-weight: 700;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  letter-spacing: 0.02em;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-dorado:hover {
+  background-color: #e0b52f;
+  color: var(--azul-marino);
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   SECCIONES Y TARJETAS
+   =============================== */
+.seccion {
+  padding: 80px 0;
+}
+
+.seccion-oscura {
+  background-color: var(--azul-marino);
+  color: var(--blanco-roto);
+}
+
+.seccion-arena {
+  background-color: var(--arena);
+}
+
+.titulo-seccion {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.subtitulo-seccion {
+  color: var(--azul-medio);
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+}
+
+.tarjeta {
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(11, 37, 69, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  height: 100%;
+}
+
+.tarjeta:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(11, 37, 69, 0.18);
+}
+
+.tarjeta .tarjeta-img-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.tarjeta .tarjeta-img-wrapper img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.tarjeta:hover .tarjeta-img-wrapper img {
+  transform: scale(1.06);
+}
+
+.tarjeta .tarjeta-cuerpo {
+  padding: 1.5rem;
+}
+
+.tarjeta .precio-dorado {
+  color: var(--dorado);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* Insignia flotante sobre la imagen */
+.insignia-flotante {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
+
+.insignia-disponible {
+  background-color: #2e7d32;
+}
+
+.insignia-no-disponible {
+  background-color: #b0261e;
+}
+
+/* ===============================
+   PASOS NUMERADOS
+   =============================== */
+.circulo-dorado {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--dorado);
+  color: var(--azul-marino);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-titulos);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 auto 1rem;
+}
+
+/* ===============================
+   FRANJA DE CIFRAS
+   =============================== */
+.cifra-grande {
+  font-family: var(--font-titulos);
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: var(--dorado);
+}
+
+/* ===============================
+   FILTROS DE CATÁLOGO
+   =============================== */
+.btn-filtro {
+  border: 2px solid var(--azul-medio);
+  color: var(--azul-medio);
+  background-color: transparent;
+  font-weight: 700;
+  border-radius: 20px;
+  padding: 0.4rem 1.25rem;
+  margin: 0 0.35rem 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn-filtro:hover {
+  background-color: var(--azul-medio);
+  color: #fff;
+}
+
+.btn-filtro.activo {
+  background-color: var(--azul-medio);
+  color: #fff;
+}
+
+/* ===============================
+   PÁGINA DE LOGIN
+   =============================== */
+.pantalla-login {
+  min-height: 100vh;
+  background: linear-gradient(160deg, var(--azul-marino) 0%, var(--azul-medio) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.tarjeta-login {
+  background-color: var(--blanco-roto);
+  border-radius: 12px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.tarjeta-login h1 {
+  font-size: 1.75rem;
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+/* ===============================
+   PANEL INTERNO
+   =============================== */
+.navbar-interno .navbar-brand {
+  font-family: var(--font-titulos);
+}

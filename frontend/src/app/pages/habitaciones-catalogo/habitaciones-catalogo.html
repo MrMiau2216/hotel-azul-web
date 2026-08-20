@@ -1,0 +1,45 @@
+<!-- PORTADA BAJA -->
+<section class="hero-baja" style="background-image: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1600&q=80&auto=format&fit=crop');">
+  <div class="hero-contenido">
+    <h1>Nuestras habitaciones</h1>
+    <p class="hero-frase mb-0">Ocho habitaciones frente al malecón de Miraflores, cada una con su propio carácter.</p>
+  </div>
+</section>
+
+<section class="seccion">
+  <div class="container">
+    <div class="text-center mb-5">
+      <button
+        *ngFor="let tipo of tipos"
+        class="btn btn-filtro"
+        [class.activo]="filtroActivo === tipo"
+        (click)="filtrarPorTipo(tipo)">
+        {{ tipo }}
+      </button>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" *ngFor="let habitacion of habitacionesFiltradas">
+        <div class="tarjeta">
+          <div class="tarjeta-img-wrapper">
+            <img [src]="habitacion.urlImagen" [alt]="'Habitación ' + habitacion.numero">
+            <span class="insignia-flotante" [class.insignia-disponible]="habitacion.estado === 'DISPONIBLE'" [class.insignia-no-disponible]="habitacion.estado !== 'DISPONIBLE'">
+              {{ habitacion.estado === 'DISPONIBLE' ? 'Disponible' : 'No disponible' }}
+            </span>
+          </div>
+          <div class="tarjeta-cuerpo">
+            <h5>Habitación {{ habitacion.numero }}</h5>
+            <p class="text-muted mb-2">{{ habitacion.tipo.nombre }} · Piso {{ habitacion.piso }}</p>
+            <p class="mb-3">{{ habitacion.descripcion }}</p>
+            <p class="precio-dorado mb-0">S/ {{ habitacion.precio }} <small class="text-muted fw-normal">por noche</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert mt-5 text-center" style="background-color: var(--arena); border: none; border-radius: 12px;">
+      Para reservar, comunícate con recepción llamando al <strong>(01) 555-1234</strong>.
+      Nuestro personal registrará tu reserva a tu nombre.
+    </div>
+  </div>
+</section>

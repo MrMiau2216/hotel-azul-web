@@ -1,28 +1,62 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<!-- Barra pública -->
+<nav *ngIf="seccionActual === 'publico'" class="navbar navbar-expand-lg navbar-publico fixed-top" [class.navbar-solida]="navbarSolida">
   <div class="container">
-    <a class="navbar-brand" routerLink="/">Hotel Azul</a>
-    <div class="navbar-nav">
-      <a class="nav-link" routerLink="/">Inicio</a>
-
-      <ng-container *ngIf="usuario">
-        <a class="nav-link" routerLink="/habitaciones">Habitaciones</a>
-        <a class="nav-link" routerLink="/huespedes">Huéspedes</a>
-        <a class="nav-link" routerLink="/reservas">Reservas</a>
-        <a class="nav-link" routerLink="/pagos">Pagos</a>
-      </ng-container>
-    </div>
-
-    <div class="navbar-nav ms-auto">
-      <ng-container *ngIf="usuario; else sinSesion">
-        <span class="nav-link text-white">{{ usuario.username }} ({{ usuario.rol }})</span>
-        <a class="nav-link" role="button" (click)="cerrarSesion()">Cerrar sesión</a>
-      </ng-container>
-      <ng-template #sinSesion>
-        <a class="nav-link" routerLink="/login">Ingresar</a>
-      </ng-template>
+    <a class="navbar-brand" routerLink="/">Hotel Costa Azul</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navPublica">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navPublica">
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+        <a class="nav-link" routerLink="/nosotros" routerLinkActive="active">Nosotros</a>
+        <a class="nav-link" routerLink="/habitaciones-catalogo" routerLinkActive="active">Nuestras Habitaciones</a>
+      </div>
     </div>
   </div>
 </nav>
-<div class="container mt-4">
+
+<!-- Barra del panel interno -->
+<nav *ngIf="seccionActual === 'interno'" class="navbar navbar-expand-lg navbar-dark bg-dark navbar-interno">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Hotel Costa Azul</a>
+    <div class="navbar-nav">
+      <a class="nav-link" routerLink="/habitaciones">Habitaciones</a>
+      <a class="nav-link" routerLink="/huespedes">Huéspedes</a>
+      <a class="nav-link" routerLink="/reservas">Reservas</a>
+      <a class="nav-link" routerLink="/pagos">Pagos</a>
+    </div>
+    <div class="navbar-nav ms-auto">
+      <ng-container *ngIf="usuario">
+        <span class="nav-link text-white">{{ usuario.username }} ({{ usuario.rol }})</span>
+        <a class="nav-link" role="button" (click)="cerrarSesion()">Cerrar sesión</a>
+      </ng-container>
+    </div>
+  </div>
+</nav>
+
+<main>
   <router-outlet></router-outlet>
-</div>
+</main>
+
+<!-- Pie de página público -->
+<footer *ngIf="seccionActual === 'publico'" class="footer-publico">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-md-4">
+        <h5>Hotel Costa Azul</h5>
+        <p class="mb-0">Malecón de la Reserva 1035<br>Miraflores, Lima, Perú</p>
+      </div>
+      <div class="col-md-4">
+        <h5>Contacto</h5>
+        <p class="mb-1">Teléfono: (01) 555-1234</p>
+        <p class="mb-0">Correo: <a href="mailto:reservas@hotelcostaazul.pe">reservas&#64;hotelcostaazul.pe</a></p>
+      </div>
+      <div class="col-md-4">
+        <h5>Recepción</h5>
+        <p class="mb-0">Atención las 24 horas, todos los días del año.</p>
+      </div>
+    </div>
+    <hr class="border-secondary my-4">
+    <p class="text-center mb-0 small">&copy; 2026 Hotel Costa Azul. Todos los derechos reservados.</p>
+  </div>
+</footer>

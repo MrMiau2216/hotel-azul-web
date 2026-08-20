@@ -1,25 +1,117 @@
-<h2 class="mb-4">Nuestras habitaciones</h2>
+<!-- PORTADA -->
+<section class="hero-completa" style="background-image: url('https://images.unsplash.com/photo-1577587230708-187fdbef4d91?w=1600&q=80&auto=format&fit=crop');">
+  <div class="hero-contenido">
+    <h1>Hotel Costa Azul</h1>
+    <p class="hero-frase">Frente al malecón de Miraflores, con el Pacífico como vista</p>
+    <p class="mb-4">
+      Estamos a pasos del malecón, con habitaciones que miran al mar y el centro histórico de
+      Lima a solo veinte minutos. El punto ideal para conocer la ciudad sin alejarte de la costa.
+    </p>
+    <a routerLink="/habitaciones-catalogo" class="btn btn-dorado btn-lg">Ver habitaciones</a>
+  </div>
+</section>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
-  <div class="col" *ngFor="let habitacion of habitaciones">
-    <div class="card h-100 shadow-sm">
-      <img [src]="habitacion.urlImagen" class="card-img-top" alt="Habitación {{ habitacion.numero }}" style="height: 200px; object-fit: cover;">
-      <div class="card-body">
-        <div class="d-flex justify-content-between align-items-start">
-          <h5 class="card-title">Habitación {{ habitacion.numero }}</h5>
-          <span class="badge" [class.bg-success]="habitacion.estado === 'DISPONIBLE'" [class.bg-danger]="habitacion.estado !== 'DISPONIBLE'">
-            {{ habitacion.estado === 'DISPONIBLE' ? 'Disponible' : 'No disponible' }}
-          </span>
+<!-- DESCUBRE LIMA -->
+<section class="seccion">
+  <div class="container text-center">
+    <h2 class="titulo-seccion">Descubre Lima</h2>
+    <p class="subtitulo-seccion">
+      Miraflores es el mejor punto de partida para recorrer la ciudad: el mar, la bohemia y la
+      historia de Lima están todos a pocos minutos del hotel.
+    </p>
+    <div class="row g-4 text-start">
+      <div class="col-md-6 col-lg-3" *ngFor="let lugar of lugaresTuristicos">
+        <div class="tarjeta">
+          <div class="tarjeta-img-wrapper">
+            <img [src]="lugar.imagen" [alt]="lugar.nombre">
+          </div>
+          <div class="tarjeta-cuerpo">
+            <h5>{{ lugar.nombre }}</h5>
+            <p class="mb-0 text-muted">{{ lugar.descripcion }}</p>
+          </div>
         </div>
-        <h6 class="card-subtitle mb-2 text-muted">{{ habitacion.tipo.nombre }} · Piso {{ habitacion.piso }}</h6>
-        <p class="card-text">{{ habitacion.descripcion }}</p>
-        <p class="card-text fw-bold">S/ {{ habitacion.precio }} por noche</p>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="alert alert-info mt-4" role="alert">
-  Para reservar una habitación, comunícate con recepción llamando al <strong>(01) 555-1234</strong>.
-  Nuestro personal registrará tu reserva.
-</div>
+<!-- HABITACIONES DESTACADAS -->
+<section class="seccion seccion-arena">
+  <div class="container text-center">
+    <h2 class="titulo-seccion">Habitaciones destacadas</h2>
+    <p class="subtitulo-seccion">
+      Una muestra de lo que te espera. La disponibilidad que ves aquí es la real, tomada al
+      momento del registro interno del hotel.
+    </p>
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let habitacion of habitacionesDestacadas">
+        <div class="tarjeta">
+          <div class="tarjeta-img-wrapper">
+            <img [src]="habitacion.urlImagen" [alt]="'Habitación ' + habitacion.numero">
+            <span class="insignia-flotante" [class.insignia-disponible]="habitacion.estado === 'DISPONIBLE'" [class.insignia-no-disponible]="habitacion.estado !== 'DISPONIBLE'">
+              {{ habitacion.estado === 'DISPONIBLE' ? 'Disponible' : 'No disponible' }}
+            </span>
+          </div>
+          <div class="tarjeta-cuerpo">
+            <h5>Habitación {{ habitacion.numero }} · {{ habitacion.tipo.nombre }}</h5>
+            <p class="precio-dorado mb-0">S/ {{ habitacion.precio }} <small class="text-muted fw-normal">por noche</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a routerLink="/habitaciones-catalogo" class="btn btn-dorado btn-lg mt-4">Ver todas las habitaciones</a>
+  </div>
+</section>
+
+<!-- POR QUÉ ELEGIRNOS -->
+<section class="seccion">
+  <div class="container text-center">
+    <h2 class="titulo-seccion mb-5">Por qué elegirnos</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="fs-1 mb-3">🍽️</div>
+        <h5>Desayuno buffet peruano</h5>
+        <p class="text-muted">Incluido cada mañana, con pan artesanal, frutas de estación y platos criollos.</p>
+      </div>
+      <div class="col-md-4">
+        <div class="fs-1 mb-3">🌊</div>
+        <h5>Vista al mar</h5>
+        <p class="text-muted">La mayoría de nuestras habitaciones miran directamente al Pacífico.</p>
+      </div>
+      <div class="col-md-4">
+        <div class="fs-1 mb-3">🕑</div>
+        <h5>Recepción 24 horas</h5>
+        <p class="text-muted">Atendida en persona a cualquier hora del día, todos los días del año.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO RESERVAR -->
+<section class="seccion seccion-oscura">
+  <div class="container text-center">
+    <h2 class="titulo-seccion mb-5">¿Cómo reservar?</h2>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="circulo-dorado">1</div>
+        <p>Revisa nuestras habitaciones disponibles en esta página</p>
+      </div>
+      <div class="col-md-3">
+        <div class="circulo-dorado">2</div>
+        <p>Llámanos al (01) 555-1234 e indícanos la habitación que elegiste</p>
+      </div>
+      <div class="col-md-3">
+        <div class="circulo-dorado">3</div>
+        <p>Nuestra recepción registra la reserva a tu nombre</p>
+      </div>
+      <div class="col-md-3">
+        <div class="circulo-dorado">4</div>
+        <p>Realiza el pago al llegar al hotel</p>
+      </div>
+    </div>
+    <p class="mt-4 mb-0" style="color: var(--arena);">
+      La disponibilidad que se muestra en esta página se actualiza en tiempo real según el
+      registro interno del hotel.
+    </p>
+  </div>
+</section>

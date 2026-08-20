@@ -1,0 +1,96 @@
+<!-- PORTADA BAJA -->
+<section class="hero-baja" style="background-image: url('https://images.unsplash.com/photo-1671798747357-aa4364af0b72?w=1600&q=80&auto=format&fit=crop');">
+  <div class="hero-contenido">
+    <h1>Nosotros</h1>
+  </div>
+</section>
+
+<!-- NUESTRA HISTORIA -->
+<section class="seccion">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h2 class="titulo-seccion">Nuestra historia</h2>
+        <p>
+          Hotel Costa Azul abrió sus puertas en 1998, cuando la familia Vargas decidió convertir
+          una antigua casona de Miraflores en un hospedaje de doce habitaciones. La idea era
+          simple: ofrecer a los visitantes de Lima el trato que le darían a un familiar que
+          llega de viaje, a pocos pasos del malecón.
+        </p>
+        <p>
+          Casi treinta años después, el hotel sigue siendo administrado por la misma familia.
+          Hemos crecido y renovado nuestras habitaciones, pero mantenemos lo que nos distingue
+          desde el primer día: atención personalizada, recepción que conoce a cada huésped por
+          su nombre, y esa cercanía con el mar que Miraflores no tiene en ningún otro lado.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISIÓN Y VISIÓN -->
+<section class="seccion seccion-arena">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="tarjeta tarjeta-cuerpo p-4 h-100">
+          <h3>Misión</h3>
+          <p class="mb-0 text-muted">
+            Recibir a quienes visitan Lima con la calidez de una familia limeña, ofreciendo un
+            hospedaje cómodo, seguro y frente al mar, a pasos de todo lo que hace única a la
+            ciudad.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="tarjeta tarjeta-cuerpo p-4 h-100">
+          <h3>Visión</h3>
+          <p class="mb-0 text-muted">
+            Ser el hotel de referencia en Miraflores para quienes buscan un hospedaje familiar
+            con vista al mar, reconocido por su atención cercana tanto por viajeros peruanos
+            como extranjeros.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILIDADES -->
+<section class="seccion">
+  <div class="container text-center">
+    <h2 class="titulo-seccion">Facilidades del hotel</h2>
+    <p class="subtitulo-seccion">Todo lo que necesitas durante tu estadía, dentro del mismo hotel.</p>
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let facilidad of facilidades">
+        <div class="fs-1 mb-2">{{ facilidad.icono }}</div>
+        <h5>{{ facilidad.nombre }}</h5>
+        <p class="text-muted">{{ facilidad.texto }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRANJA DE CIFRAS -->
+<section class="seccion seccion-oscura">
+  <div class="container text-center">
+    <div class="row g-4">
+      <div class="col-6 col-md-3">
+        <div class="cifra-grande">25</div>
+        <p class="mb-0" style="color: var(--arena);">años de experiencia</p>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="cifra-grande">8</div>
+        <p class="mb-0" style="color: var(--arena);">habitaciones</p>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="cifra-grande">+12 000</div>
+        <p class="mb-0" style="color: var(--arena);">huéspedes atendidos</p>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="cifra-grande">4.7</div>
+        <p class="mb-0" style="color: var(--arena);">calificación promedio</p>
+      </div>
+    </div>
+  </div>
+</section>
